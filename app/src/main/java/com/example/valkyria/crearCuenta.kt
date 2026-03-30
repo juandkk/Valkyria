@@ -17,6 +17,7 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ForegroundColorSpan
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
@@ -143,6 +144,26 @@ class crearCuenta : AppCompatActivity() {
             val telefonoText = telefono.text.toString().trim()
             val passccText = passwordcc.text.toString().trim()
             val paisText = inputPais.text.toString().trim()
+            val prefs = getSharedPreferences("usuarios", MODE_PRIVATE)
+            val editor = prefs.edit()
+
+            val email = correocc.text.toString()
+            val password = passwordcc.text.toString()
+
+            editor.putString(email, password)
+            editor.apply()
+
+            Toast.makeText(this, "Usuario registrado", Toast.LENGTH_SHORT).show()
+
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+
+            val emailRecibido = intent.getStringExtra("email")
+
+            if (emailRecibido != null) {
+                correocc.setText(emailRecibido)
+            }
+
 
             if (usuarioText.isEmpty() || correoccText.isEmpty()) {
                 if (usuarioText.isEmpty()) {
@@ -163,10 +184,17 @@ class crearCuenta : AppCompatActivity() {
                 }
 
             } else {
-                val intent = Intent(this, Baul_contrasenas::class.java)
-                startActivity(intent)
+
+                    val intent = Intent(this, Verificacion::class.java)
+
+                    intent.putExtra("email", correoccText)
+                    intent.putExtra("password", passccText)
+
+                    startActivity(intent)
+
             }
         }
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#101322"
+    android:descendantFocusability="beforeDescendants"
+    tools:context=".Verificacion">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="32dp">
+
+
+        <TextView
+            android:id="@+id/verificacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Verificación"
+            android:textColor="@color/blanco"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/atras_v"
+            android:layout_width="38dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/boton_back"/>
+
+        <ImageView
+            android:id="@+id/logo_v"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/verificacion"
+            app:srcCompat="@drawable/logo_verificacion" />
+
+        <TextView
+            android:id="@+id/txt_gracias_confiar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Gracias por confiar en \nnosotros"
+            android:gravity="center"
+            android:textColor="@color/blanco"
+            android:fontFamily="@font/inter_font"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo_v" />
+
+        <TextView
+            android:id="@+id/txt_general_v"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="Para iniciar nuestra aventura debes verificar \ntu correo electrónico. Hemos enviado un \nenlace de activación a tu bandeja de \nentrada."
+            android:textColor="@color/gris_1"
+            android:fontFamily="@font/inter_font"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.511"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_gracias_confiar" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_verificar"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="30dp"
+
+            android:text="Verificar ahora"
+            android:textColor="@color/blanco"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:fontFamily="@font/inter_font"
+
+            android:background="@drawable/bg_boton_ingresar"
+            app:backgroundTint="@null"
+
+            app:icon="@drawable/open"
+            app:iconGravity="textEnd"
+            app:iconPadding="8dp"
+
+            app:rippleColor="@android:color/transparent"
+
+            app:layout_constraintTop_toBottomOf="@id/txt_general_v"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_reenviar"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="24dp"
+
+            android:background="@drawable/bg_boton_secundario"
+            android:fontFamily="@font/inter_font"
+            android:text="Reenviar correo"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+
+            android:textColor="@color/gris_1"
+
+            android:textSize="16sp"
+            app:backgroundTint="@null"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_verificar"
+            app:rippleColor="@android:color/transparent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

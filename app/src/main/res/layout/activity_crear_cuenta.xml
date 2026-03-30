@@ -114,7 +114,11 @@
                 android:background="@null"
                 android:hint="Introduce tu usuario"
                 android:textColor="#FFFFFF"
-                android:textColorHint="#8A94A6" />
+                android:textColorHint="#8A94A6"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:scrollHorizontally="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -165,7 +169,10 @@
                 android:background="@null"
                 android:hint="name@Valkirya.com"
                 android:textColor="#FFFFFF"
-                android:textColorHint="#8A94A6" />
+                android:textColorHint="#8A94A6"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:scrollHorizontally="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -336,6 +343,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:layout_marginTop="10dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
 
             app:boxBackgroundMode="filled"
             app:boxBackgroundColor="#1A2238"

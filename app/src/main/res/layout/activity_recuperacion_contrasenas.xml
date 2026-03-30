@@ -186,14 +186,12 @@
             android:id="@+id/Nombre_Valkyria_r_c"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
             android:fontFamily="@font/inter_font"
             android:text="Valkyria"
             android:textColor="@color/blanco"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/icono_r_c" />
 
