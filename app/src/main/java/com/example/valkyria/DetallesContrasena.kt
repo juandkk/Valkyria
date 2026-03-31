@@ -10,7 +10,7 @@ class DetallesContrasena : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalles_contrasena)
 
-        // Botón volver
+
         findViewById<android.widget.ImageView>(R.id.btn_back_detalles).setOnClickListener {
             finish()
         }

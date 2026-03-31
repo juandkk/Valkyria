@@ -34,7 +34,7 @@ class Baul_contrasenas : AppCompatActivity() {
 
         val adapter = PasswordAdapter(lista) { item ->
 
-            val intent = Intent(this, Editor_contrasena::class.java)
+            val intent = Intent(this, DetallesContrasena::class.java)
 
             intent.putExtra("nombre", item.nombre)
             intent.putExtra("usuario", item.usuario)
