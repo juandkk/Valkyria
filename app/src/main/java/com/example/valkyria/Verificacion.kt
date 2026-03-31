@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -18,8 +17,13 @@ class Verificacion : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_verificacion)
 
-        val atrasv = findViewById<ImageView>(R.id.atras_v)
-        atrasv.setOnClickListener {
+        val btnAtras = findViewById<ImageView>(R.id.atras_v)
+        btnAtras.setOnClickListener {
+
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+
+            startActivity(intent)
             finish()
         }
 
@@ -38,16 +42,13 @@ class Verificacion : AppCompatActivity() {
 
             val prefs = getSharedPreferences("usuarios", MODE_PRIVATE)
 
-            // 🔴 Verificar si ya existe
             if (prefs.contains(email)) {
                 Toast.makeText(this, "El usuario ya existe", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // 🟢 Guardar usuario
             prefs.edit().putString(email, password).apply()
 
-            // 🔐 Guardar sesión automáticamente
             getSharedPreferences("sesion", MODE_PRIVATE)
                 .edit()
                 .putBoolean("logueado", true)
@@ -55,7 +56,6 @@ class Verificacion : AppCompatActivity() {
 
             Toast.makeText(this, "Cuenta verificada correctamente", Toast.LENGTH_SHORT).show()
 
-            // 👉 Ir directo a la app
             startActivity(Intent(this, Baul_contrasenas::class.java))
             finish()
         }

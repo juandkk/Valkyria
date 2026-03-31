@@ -139,61 +139,39 @@ class crearCuenta : AppCompatActivity() {
         })
 
         botoncc.setOnClickListener {
+
             val usuarioText = usuario.text.toString().trim()
             val correoccText = correocc.text.toString().trim()
             val telefonoText = telefono.text.toString().trim()
             val passccText = passwordcc.text.toString().trim()
             val paisText = inputPais.text.toString().trim()
+
+            if (usuarioText.isEmpty() || correoccText.isEmpty() || telefonoText.isEmpty() || passccText.isEmpty() || paisText.isEmpty()) {
+
+                if (usuarioText.isEmpty()) layoutUsuario.error = "Ingresa tu nombre"
+                if (correoccText.isEmpty()) layoutCorreocc.error = "Ingresa tu correo"
+                if (telefonoText.isEmpty()) layoutTelefono.error = "Ingresa tu teléfono"
+                if (passccText.isEmpty()) layoutPasswordcc.error = "Ingresa tu contraseña"
+                if (paisText.isEmpty()) layoutPais.error = "Selecciona un país"
+
+                return@setOnClickListener
+            }
+
+
             val prefs = getSharedPreferences("usuarios", MODE_PRIVATE)
-            val editor = prefs.edit()
 
-            val email = correocc.text.toString()
-            val password = passwordcc.text.toString()
+            prefs.edit()
+                .putString("nombre_usuario", usuarioText)
+                .putString(correoccText, passccText)
+                .apply()
 
-            editor.putString(email, password)
-            editor.apply()
+            val intent = Intent(this, Verificacion::class.java)
+            intent.putExtra("email", correoccText)
+            intent.putExtra("password", passccText)
 
-            Toast.makeText(this, "Usuario registrado", Toast.LENGTH_SHORT).show()
-
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-
-            val emailRecibido = intent.getStringExtra("email")
-
-            if (emailRecibido != null) {
-                correocc.setText(emailRecibido)
-            }
-
-
-            if (usuarioText.isEmpty() || correoccText.isEmpty()) {
-                if (usuarioText.isEmpty()) {
-                    layoutUsuario.error = "Ingresa tu nombre de usuario"
-                }
-
-                if (correoccText.isEmpty()) {
-                    layoutCorreocc.error = "Ingresa tu correo"
-                }
-                if (telefonoText.isEmpty()) {
-                    layoutTelefono.error = "Ingresa tu correo"
-                }
-                if (passccText.isEmpty()) {
-                    layoutPasswordcc.error = "Ingresa tu correo"
-                }
-                if (paisText.isEmpty()) {
-                    layoutPais.error = "Ingresa tu correo"
-                }
-
-            } else {
-
-                    val intent = Intent(this, Verificacion::class.java)
-
-                    intent.putExtra("email", correoccText)
-                    intent.putExtra("password", passccText)
-
-                    startActivity(intent)
-
-            }
+            startActivity(intent)
         }
+
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

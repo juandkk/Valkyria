@@ -167,7 +167,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@null"
-                android:hint="name@Valkirya.com"
+                android:hint="name@Valkyria.com"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#8A94A6"
                 android:inputType="textEmailAddress"

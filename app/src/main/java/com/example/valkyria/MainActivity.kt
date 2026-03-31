@@ -26,11 +26,8 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        // 🔐 SharedPreferences
         val prefs = getSharedPreferences("sesion", MODE_PRIVATE)
         val logueado = prefs.getBoolean("logueado", false)
-
-        // 🔵 Biometría
         val executor = ContextCompat.getMainExecutor(this)
 
         val biometricPrompt = BiometricPrompt(this, executor,
@@ -56,7 +53,6 @@ class MainActivity : AppCompatActivity() {
             .setNegativeButtonText("Cancelar")
             .build()
 
-        // 🔥 AUTO LOGIN CON HUELLA
         if (logueado) {
             val biometricManager = BiometricManager.from(this)
 
@@ -67,7 +63,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // 🔹 Campos
         val email = findViewById<TextInputEditText>(R.id.entrada_email_edit)
         val password = findViewById<TextInputEditText>(R.id.entrada_contrasena_edit)
         val boton = findViewById<MaterialButton>(R.id.btn_ingresar)
@@ -82,10 +77,13 @@ class MainActivity : AppCompatActivity() {
 
                 val texto = s.toString().trim()
 
-                if (texto.contains("@valkirya.com")) {
+                val prefsUsuarios = getSharedPreferences("usuarios", MODE_PRIVATE)
+
+                if (!android.util.Patterns.EMAIL_ADDRESS.matcher(texto).matches()) {
                     boton.text = "Ingresar"
                 } else {
-                    boton.text = "Crear cuenta"
+                    val existe = prefsUsuarios.contains(texto)
+                    boton.text = if (existe) "Ingresar" else "Crear cuenta"
                 }
 
                 when {
@@ -139,7 +137,6 @@ class MainActivity : AppCompatActivity() {
 
             } else {
                 if (savedPassword == passText) {
-
                     getSharedPreferences("sesion", MODE_PRIVATE)
                         .edit()
                         .putBoolean("logueado", true)
