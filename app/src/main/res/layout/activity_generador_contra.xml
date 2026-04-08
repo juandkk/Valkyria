@@ -40,7 +40,7 @@
                     app:srcCompat="@drawable/boton_back" />
 
                 <TextView
-                    android:id="@+id/generador"
+                    android:id="@+id/configuracion"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -286,7 +286,7 @@
                     android:background="@drawable/bg_input"
                     android:ems="10"
                     android:inputType="text"
-                    android:padding="12dp" />
+                    android:padding="12dp"/>
             </LinearLayout>
 
             <Button
